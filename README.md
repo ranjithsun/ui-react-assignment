@@ -12,10 +12,10 @@ The app is built on:
 
 Clone the repository and install packages:
 *************
-npm install
+> npm install
 *************
 
 Run the App using Docker Compose up command
 *******************
-docker-compose up
+> docker-compose up
 *******************
