@@ -1,0 +1,148 @@
+.header{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+  font-size: 24px;
+}
+.content-section {
+  width: 1200px;
+  margin: auto;
+  background-color: #e1e1e1;
+  min-height: 700px;
+  position: relative;
+}
+ul.content-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+ul.content-list li {
+  padding: 10px 20px;
+  flex: 1;
+  list-style: none;
+}
+ul.content-list li {
+  padding: 10px 0;
+  flex: 1;
+  list-style: none;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border-right: solid 5px #ffffff;
+  background-color: #aaaaaa;
+  overflow-x: hidden;
+}
+.sidenav a:first-child{
+  margin-top: 20px;
+}
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  border: 1px solid #818181;
+  background-color: #000000;
+  display: block;
+}
+.sidenav a.active {
+  color: #ffffff;
+  border: 1px solid #000000;
+  background-color: #818181;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.launchpad-container {
+  padding: 50px 20px;
+}
+.lauchpad-select-wrapper {
+  display: flex;
+}
+.launchpad-label {
+  font-size: 20px;
+}
+.launchpad-list {
+  margin-left: 10px;
+  width: 200px;
+}
+
+.failure-message-container {
+  margin: 30px 0;
+}
+.failure-message {
+  font-size: 20px;
+}
+.failure-list-container, .statellite-list {
+  margin: 20px 0;
+}
+.failure-list-row, .statellite-list-row {
+  display: flex;
+  padding: 10px;
+}
+.title-row {
+  border-bottom: 1px solid #000;
+  background-color: #ffffff;
+}
+.failure-list-column-one, .statellite-list-column-one {
+  flex: 1;
+}
+.failure-list-column-two{
+  flex: 3;
+}
+.failure-list-column-three{
+  flex: 10;
+}
+.statellite-list-column{
+  flex: 3;
+}
+.row-odd {
+  background-color: #f9f9f9;
+}
+.row-even {
+  background-color: #f1f1f1;
+}
+
+
+
+
+.statellite-list-container {
+  padding: 20px 40px;
+}
+.statellite-list {
+  height: 700px;
+  overflow: scroll;
+}
+.datepicker {
+  display: flex;
+}
+.selectbox-label {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.selectbox {
+  margin: 0 10px;
+}
+.selectbox select{
+  height: 24px;
+  width: 100px;
+}

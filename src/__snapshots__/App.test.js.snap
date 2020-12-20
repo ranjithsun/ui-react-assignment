@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly enzyme 1`] = `
+<BrowserRouter>
+  <div
+    className="App"
+  >
+    <header
+      className="header"
+    >
+      <div
+        className="header-title"
+      >
+        SpaceX Assignment
+      </div>
+    </header>
+    <section>
+      <div
+        className="content-section"
+      >
+        <div
+          className="sidenav"
+        >
+          <NavLink
+            activeClassName="active"
+            to="/failed_launches"
+          >
+            Failed Launches
+          </NavLink>
+          <NavLink
+            activeClassName="active"
+            to="/starlink_satellites"
+          >
+            Starlink satellites
+          </NavLink>
+        </div>
+        <div
+          className="main"
+        >
+          <Switch>
+            <Route
+              path="/failed_launches"
+            >
+              <Launchfailures />
+            </Route>
+            <Route
+              path="/starlink_satellites"
+            >
+              <Connect(StarlinkSatellites) />
+            </Route>
+            <Route
+              path="/"
+            >
+              <Launchfailures />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </section>
+  </div>
+</BrowserRouter>
+`;
