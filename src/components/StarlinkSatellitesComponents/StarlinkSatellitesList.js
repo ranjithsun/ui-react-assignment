@@ -1,6 +1,8 @@
+import {SatelliteList} from './starlinksatellites.style';
+
 function StarlinkSatellitesList({filteredSatellites}){
     return(
-        <div data-testid="statellite-list" className="statellite-list">
+        <SatelliteList data-testid="statellite-list">
             <div className="statellite-list-row title-row">
                 <div className="statellite-list-column-one">S.No</div>
                 <div className="statellite-list-column">Starlink Object Name</div>
@@ -21,7 +23,7 @@ function StarlinkSatellitesList({filteredSatellites}){
                 }
                 )
             }
-        </div>
+        </SatelliteList>
     );
 }
 

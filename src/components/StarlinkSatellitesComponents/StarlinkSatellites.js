@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { connect } from "react-redux";
-import { getSatellitesList } from "../services/fetchSatellites";
-import StarlinkSatellitesList from './StarlinkSatellitesList'
-import StarlinkDatePicker from './StarlinkDatePicker';
-import {dateArray,monthArray,yearArray} from '../constants/ConstantValues';
+import { getSatellitesList } from "../../services/fetchSatellites";
+import StarlinkSatellitesList from '../StarlinkSatellitesComponents/StarlinkSatellitesList'
+import StarlinkDatePicker from '../StarlinkSatellitesComponents/StarlinkDatePicker';
+import {dateArray,monthArray,yearArray} from '../../constants/ConstantValues';
+
+import {StatelliteListContainer} from './starlinksatellites.style';
 
 function StarlinkSatellites(props){
 
@@ -43,7 +45,7 @@ function StarlinkSatellites(props){
      }
 
     return(
-        <div className="statellite-list-container">
+        <StatelliteListContainer>
             <StarlinkDatePicker 
                 filterSatellites={filterSatellites} 
                 yearArray={yearArray} 
@@ -52,7 +54,7 @@ function StarlinkSatellites(props){
                 showMonth={showMonth} 
                 showDate={showDate} />
             <StarlinkSatellitesList filteredSatellites={filteredSatellites}/>
-        </div>
+        </StatelliteListContainer>
     );
 }
 

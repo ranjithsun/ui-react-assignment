@@ -1,15 +1,11 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import { getByText, findByText, render, fireEvent, cleanup, screen, waitFor} from '@testing-library/react';
 
-import LaunchFailures from '../LaunchFailures';
-
-Enzyme.configure({ adapter: new Adapter() });
+import LaunchFailures from '../LaunchFailureComponents/LaunchFailures';
 
 afterEach(cleanup);
 
-it('Test the component loads correctly', () => {
+it('Test whether the component loads correctly', () => {
     const { getByText, getByTestId } = render(<LaunchFailures />);
 
     /** Test whether the select element load with tthe proper label*/
@@ -23,10 +19,10 @@ it('Test the component loads correctly', () => {
  it('Test the FetchAPI call works and options loads', async () => {
     const { getByTestId } = render(<LaunchFailures />);
 
-    await waitFor(() => expect(getByTestId('lauchPads').childNodes.length).toBeGreaterThan(1), {options: { timeOut:2000}});
+    await waitFor(() => expect(getByTestId('lauchPads').childNodes.length).toBeGreaterThan(1), {options: { timeOut:5000}});
  });
 
-it('can select an option', async () => {
+it('Could be able select an option', async () => {
     const { getByTestId } = render(<LaunchFailures />);
 
     const keyDownEvent = {

@@ -1,14 +1,16 @@
+import {LauchpadFailureContainer, FailureMessageContainer, FailureListContainer} from './launchfailure.style';
+
 function LaunchFailureList({selectedLaunchPad, launchPadFailures}){
     return(
-        <div className="lauchpad-failure-container" data-testid="lauchpad-failure-container">
+        <LauchpadFailureContainer data-testid="lauchpad-failure-container">
             {
             launchPadFailures.all_failures && launchPadFailures.all_failures.length>0
             ?
-            <div className="failure-message-container">
+            <FailureMessageContainer>
                 <div className="failure-message">
                     <b>{selectedLaunchPad}</b> has failed {launchPadFailures.all_failures.length} times.
                 </div>
-                <div className="failure-list-container">
+                <FailureListContainer>
                     <div className="failure-list-row title-row">
                         <div className="failure-list-column-one">S.No</div>
                         <div className="failure-list-column-two">Name of the Launch</div>
@@ -28,16 +30,16 @@ function LaunchFailureList({selectedLaunchPad, launchPadFailures}){
                         }
                     )
                     }
-                </div>
-            </div>
+                </FailureListContainer>
+            </FailureMessageContainer>
             :
-            <div className="failure-message-container">
+            <FailureMessageContainer>
                 <div className="failure-message">
                     <b>{selectedLaunchPad}</b> has no failure history.
                 </div>
-            </div>
+            </FailureMessageContainer>
             }
-        </div>
+        </LauchpadFailureContainer>
     );
 }
 export default LaunchFailureList;

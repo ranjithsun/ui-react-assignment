@@ -1,10 +1,11 @@
 import React, {useEffect ,useState} from 'react';
 
-import FetchAPI from '../services/FetchServices';
-import LaunchPadSelect from './LaunchPadSelect';
-import LaunchFailureList from './LaunchFailureList';
+import FetchAPI from '../../services/FetchServices';
+import LaunchPadSelect from '../LaunchFailureComponents/LaunchPadSelect';
+import LaunchFailureList from '../LaunchFailureComponents/LaunchFailureList';
 
-import { LAUNCHPADFETCHURL, LAUNCHQUERYURL} from '../constants/ConstantValues';
+import {LaunchpadContainer} from './launchfailure.style';
+import { LAUNCHPADFETCHURL, LAUNCHQUERYURL} from '../../constants/ConstantValues';
 
 function Launchfailures(){
 
@@ -50,7 +51,7 @@ function Launchfailures(){
     },[failedLauchList, selectedLaunchPad]);
     
     return(
-        <div className="launchpad-container">
+        <LaunchpadContainer>
            
             <LaunchPadSelect listOfLauchPads={listOfLauchPads} changeLaunchpad={changeLaunchpad} />
             {
@@ -58,7 +59,7 @@ function Launchfailures(){
                 <LaunchFailureList launchPadFailures={launchPadFailures} selectedLaunchPad={selectedLaunchPad}/>
             }
             
-        </div>
+        </LaunchpadContainer>
     );
 }
 

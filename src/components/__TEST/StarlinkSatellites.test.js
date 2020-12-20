@@ -4,8 +4,8 @@ import { getByText, findByText, render, fireEvent, cleanup, screen, waitFor} fro
 
 import { Provider } from 'react-redux'
 import configureStore from '../../redux/store';
-import StarlinkSatellites from '../StarlinkSatellites';
-import StarlinkDatePicker from '../StarlinkDatePicker';
+import StarlinkSatellites from '../StarlinkSatellitesComponents/StarlinkSatellites';
+import StarlinkDatePicker from '../StarlinkSatellitesComponents/StarlinkDatePicker';
 import {dateArray,monthArray,yearArray} from '../../constants/ConstantValues';
 
 afterEach(cleanup);
@@ -27,17 +27,21 @@ it('Test the component loads correctly', () => {
 it('checks initial state value is []', async () => {
     const { getByTestId } = render(<Provider store={configureStore()}><StarlinkSatellites /></Provider>);
 
-    expect(getByTestId('statellite-list').childNodes.length).toEqual(1);
+    expect(getByTestId('statellite-list').childNodes.length).toBe(1); 
  });
 
 it('Test the FetchAPI call works and list loads', async () => {
+    
     const { getByTestId } = render(<Provider store={configureStore()}><StarlinkSatellites /></Provider>);
 
-    expect(getByTestId('statellite-list').childNodes.length).toBe(1);
-    await waitFor(() => expect(getByTestId('statellite-list').childNodes.length).toBeGreaterThan(1), {options: { timeOut:2000}});
+    expect(getByTestId('statellite-list').childNodes.length).toBe(1); //initial childnode length should be one
+    await waitFor(
+        () => expect(getByTestId('statellite-list').childNodes.length).toBeGreaterThan(1), // waitfor the API call, then child node should be more than one
+        {options: { timeOut:5000}} 
+    );
  });
 
-it('can select an option', async () => {
+it('Could be able select an option', async () => {
 
     const {getByTestId } = render(<Provider store={configureStore()}><StarlinkSatellites /></Provider>);
 
