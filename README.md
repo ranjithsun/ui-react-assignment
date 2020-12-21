@@ -16,7 +16,7 @@ Clone the repository and install packages:
 *************
 > git clone <-REMOTE GIT URL->
 
-cd <-cloned depository->
+> cd <-cloned depository->
 
 > npm install
 *************
@@ -28,10 +28,10 @@ Run the App using Docker Compose up command
 
 To Run Test
 ****************
-npm test
+> npm test
 ****************
 
 To Run in Browser
 ****************
-http://localhost:3000/failed_launches
+> http://localhost:3000/failed_launches
 ****************
