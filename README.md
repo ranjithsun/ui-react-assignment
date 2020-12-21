@@ -19,3 +19,8 @@ Run the App using Docker Compose up command
 *******************
 > docker-compose up
 *******************
+
+To Run in Browser
+****************
+http://localhost:3000/failed_launches
+****************

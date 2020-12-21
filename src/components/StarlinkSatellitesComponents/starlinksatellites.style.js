@@ -44,3 +44,8 @@ export const SatelliteList = styled.div`
         background-color: #ffffff;
     }
 `;
+
+export const NoDataContainer = styled.div`
+    padding: 10px;
+    font-size: 16px;
+`

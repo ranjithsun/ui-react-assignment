@@ -1,54 +1,30 @@
 import React, {useEffect ,useState} from 'react';
+import { useQuery } from '@apollo/client';
 
-import FetchAPI from '../../services/FetchServices';
 import LaunchPadSelect from '../LaunchFailureComponents/LaunchPadSelect';
 import LaunchFailureList from '../LaunchFailureComponents/LaunchFailureList';
 
 import {LaunchpadContainer} from './launchfailure.style';
-import { LAUNCHPADFETCHURL, LAUNCHQUERYURL} from '../../constants/ConstantValues';
+
+import {getLaunchPadsQuery} from '../../queries/queries';
 
 function Launchfailures(){
 
     const [listOfLauchPads, setListOfLauchPads] = useState([]);
-    const [failedLauchList, setFailedLauchList] = useState([]);
-    const [launchPadFailures, setLaunchPadFailures] = useState([]);
     const [selectedLaunchPad, setSelectedLaunchPad] = useState();
     const [showResult, setShowResult] = useState(false);
 
-    const launchQuery = {
-        query:{
-            success: false
-        }
-    };
+    const { data } = useQuery(getLaunchPadsQuery);
 
     useEffect(() => {
-        FetchAPI(LAUNCHPADFETCHURL)
-        .then(items => {
-            setListOfLauchPads(items);
-        });
+        if(data) setListOfLauchPads(data.allLaunchPads);
         return( ()=>setListOfLauchPads([]));
-    }, []);
+    }, [data]);
 
     const changeLaunchpad = (event)=>{
-        setSelectedLaunchPad(event.target.options[event.target.selectedIndex].text);
-        launchQuery.query.launchpad = event.target.value;
-        FetchAPI(LAUNCHQUERYURL, launchQuery, 'POST')
-        .then(items => {
-            setFailedLauchList(items);
-        });
+        setSelectedLaunchPad(event.target.value);
         event.target.value!=='' ? setShowResult(true) : setShowResult(false) ; 
     };
-
-    useEffect(()=>{
-        const launchPadFailList = [];
-        if(failedLauchList && failedLauchList.docs){
-            const failedLaunches = failedLauchList.docs.reduce(function (failures, launch) {
-                failures.push({name:launch.name, failures: [launch.failures[0].reason]});
-                return failures;
-            }, launchPadFailList);
-            setLaunchPadFailures({launchpad: selectedLaunchPad, all_failures:failedLaunches});
-        }
-    },[failedLauchList, selectedLaunchPad]);
     
     return(
         <LaunchpadContainer>
@@ -56,7 +32,7 @@ function Launchfailures(){
             <LaunchPadSelect listOfLauchPads={listOfLauchPads} changeLaunchpad={changeLaunchpad} />
             {
                 showResult === true &&
-                <LaunchFailureList launchPadFailures={launchPadFailures} selectedLaunchPad={selectedLaunchPad}/>
+                <LaunchFailureList selectedLaunchPad={selectedLaunchPad}/>
             }
             
         </LaunchpadContainer>

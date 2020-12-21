@@ -1,12 +1,20 @@
 import React from 'react';
 import { getByText, findByText, render, fireEvent, cleanup, screen, waitFor} from '@testing-library/react';
 
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+
 import LaunchFailures from '../LaunchFailureComponents/LaunchFailures';
+
+//Setup Apollo Client
+const client = new ApolloClient({
+    uri: 'http://localhost:8080/graphql',
+    cache: new InMemoryCache()
+  });
 
 afterEach(cleanup);
 
 it('Test whether the component loads correctly', () => {
-    const { getByText, getByTestId } = render(<LaunchFailures />);
+    const { getByText, getByTestId } = render(<ApolloProvider client={client}><LaunchFailures /></ApolloProvider>);
 
     /** Test whether the select element load with tthe proper label*/
     expect(getByText(/List/i).textContent).toBe("List of Launchpads:");
@@ -17,13 +25,13 @@ it('Test whether the component loads correctly', () => {
  });
 
  it('Test the FetchAPI call works and options loads', async () => {
-    const { getByTestId } = render(<LaunchFailures />);
+    const { getByTestId } = render(<ApolloProvider client={client}><LaunchFailures /></ApolloProvider>);
 
     await waitFor(() => expect(getByTestId('lauchPads').childNodes.length).toBeGreaterThan(1), {options: { timeOut:5000}});
  });
 
 it('Could be able select an option', async () => {
-    const { getByTestId } = render(<LaunchFailures />);
+    const { getByTestId } = render(<ApolloProvider client={client}><LaunchFailures /></ApolloProvider>);
 
     const keyDownEvent = {
         key: 'ArrowDown',

@@ -1,14 +1,34 @@
-import {LauchpadFailureContainer, FailureMessageContainer, FailureListContainer} from './launchfailure.style';
+import React, {useEffect ,useState} from 'react';
+import { useQuery } from '@apollo/client';
 
-function LaunchFailureList({selectedLaunchPad, launchPadFailures}){
+import {LauchpadFailureContainer, FailureMessageContainer, FailureListContainer} from './launchfailure.style';
+import {getFailedlauchesQuery} from '../../queries/queries';
+
+function LaunchFailureList({selectedLaunchPad}){
+
+    const [failedLauchList, setFailedLauchList] = useState([]);
+
+    const { loading, data } = useQuery(getFailedlauchesQuery, {variables:{id:selectedLaunchPad}});
+
+    useEffect(()=>{
+        if(data) setFailedLauchList(data.launchPadFailures);
+    },[failedLauchList, selectedLaunchPad, data]);
+
+    if (loading) 
+        return <LauchpadFailureContainer>
+                <FailureMessageContainer>
+                    <div className="failure-message">Loading...</div>
+                </FailureMessageContainer>
+            </LauchpadFailureContainer>;
+
     return(
         <LauchpadFailureContainer data-testid="lauchpad-failure-container">
             {
-            launchPadFailures.all_failures && launchPadFailures.all_failures.length>0
+            failedLauchList.all_failures && failedLauchList.all_failures.length>0
             ?
             <FailureMessageContainer>
                 <div className="failure-message">
-                    <b>{selectedLaunchPad}</b> has failed {launchPadFailures.all_failures.length} times.
+                    <b>{failedLauchList.launchpad}</b> has failed {failedLauchList.all_failures.length} times.
                 </div>
                 <FailureListContainer>
                     <div className="failure-list-row title-row">
@@ -17,7 +37,7 @@ function LaunchFailureList({selectedLaunchPad, launchPadFailures}){
                         <div className="failure-list-column-three">Reason for Failure</div>
                     </div>
                     {
-                    launchPadFailures.all_failures && launchPadFailures.all_failures.map(
+                    failedLauchList.all_failures && failedLauchList.all_failures.map(
                         (launchPadFail,index) => {
                             let classNameRow = ['failure-list-row row-odd', 'failure-list-row row-even'][index % 2];
                             return(
@@ -35,7 +55,7 @@ function LaunchFailureList({selectedLaunchPad, launchPadFailures}){
             :
             <FailureMessageContainer>
                 <div className="failure-message">
-                    <b>{selectedLaunchPad}</b> has no failure history.
+                    <b>{failedLauchList.launchpad}</b> has no failure history.
                 </div>
             </FailureMessageContainer>
             }

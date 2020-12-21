@@ -1,4 +1,4 @@
-import {SatelliteList} from './starlinksatellites.style';
+import {SatelliteList, NoDataContainer} from './starlinksatellites.style';
 
 function StarlinkSatellitesList({filteredSatellites}){
     return(
@@ -9,7 +9,10 @@ function StarlinkSatellitesList({filteredSatellites}){
                 <div className="statellite-list-column">Starlink Object ID</div>
                 <div className="statellite-list-column">Launch Date</div>
             </div>
-            {filteredSatellites && filteredSatellites.map(
+            {
+            filteredSatellites.length > 0 
+            ?
+            filteredSatellites.map(
                 (satellites,index) => {
                     let classNameRow = ['statellite-list-row row-odd', 'statellite-list-row row-even'][index % 2];
                     return(
@@ -22,6 +25,8 @@ function StarlinkSatellitesList({filteredSatellites}){
                     )
                 }
                 )
+            :
+                <NoDataContainer>No data found for the given Date</NoDataContainer>
             }
         </SatelliteList>
     );
