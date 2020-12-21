@@ -43,13 +43,14 @@ export const FailureListContainer = styled.div`
         .failure-list-column-three{
             flex: 10;
         }
-        .row-odd {
-            background-color: #f9f9f9;
-        }
-        .row-even {
-            background-color: #f1f1f1;
-        }
     }
+    .row-odd {
+        background-color: #f9f9f9;
+    }
+    .row-even {
+        background-color: #f1f1f1;
+    }
+
     .title-row {
         border-bottom: 1px solid #000;
         background-color: #ffffff;

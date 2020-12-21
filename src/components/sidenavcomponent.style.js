@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 
-export const SideNav = styled.header`
-    height: 100%;
-    width: 200px;
-    position: absolute;
+export const SideNav = styled.nav`
     z-index: 1;
-    top: 0;
-    left: 0;
     border-right: solid 5px #ffffff;
     background-color: #aaaaaa;
-    overflow-x: hidden;
+    flex: 1;
 
     a:first-child{
         margin-top: 20px;

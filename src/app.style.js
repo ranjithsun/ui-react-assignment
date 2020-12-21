@@ -9,14 +9,14 @@ export const Header = styled.header`
     font-size: 24px;
 `;
 export const ContentSection = styled.div`
-    width: 1200px;
+    max-width: 1200px;
     margin: auto;
     background-color: #e1e1e1;
     min-height: 700px;
-    position: relative;
+    display: flex;
 
     .main {
-        margin-left: 200px;
         padding: 0px 10px;
+        flex: 3;
     }
 `;

@@ -27,10 +27,10 @@ function LaunchFailureList({selectedLaunchPad}){
             failedLauchList.all_failures && failedLauchList.all_failures.length>0
             ?
             <FailureMessageContainer>
-                <div className="failure-message">
+                <div data-testid="failure-message" className="failure-message">
                     <b>{failedLauchList.launchpad}</b> has failed {failedLauchList.all_failures.length} times.
                 </div>
-                <FailureListContainer>
+                <FailureListContainer data-testid="failure-list-container">
                     <div className="failure-list-row title-row">
                         <div className="failure-list-column-one">S.No</div>
                         <div className="failure-list-column-two">Name of the Launch</div>
@@ -40,6 +40,7 @@ function LaunchFailureList({selectedLaunchPad}){
                     failedLauchList.all_failures && failedLauchList.all_failures.map(
                         (launchPadFail,index) => {
                             let classNameRow = ['failure-list-row row-odd', 'failure-list-row row-even'][index % 2];
+                            console.log('classNameRow',classNameRow)
                             return(
                                 <div key={index} className={classNameRow}>
                                     <div className="failure-list-column-one">{index+1}</div>

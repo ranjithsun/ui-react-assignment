@@ -23,6 +23,8 @@ export const SelectBox = styled.div`
 
 export const SatelliteList = styled.div`
     margin: 20px 0;
+    max-height: 700px;
+    overflow-y: scroll;
     .statellite-list-row {
         display: flex;
         padding: 10px;
@@ -32,12 +34,13 @@ export const SatelliteList = styled.div`
         .statellite-list-column{
             flex: 3;
         }
-        .row-odd {
-            background-color: #f9f9f9;
-        }
-        .row-even {
-            background-color: #f1f1f1;
-        }
+    }
+    
+    .row-odd {
+        background-color: #f9f9f9;
+    }
+    .row-even {
+        background-color: #f1f1f1;
     }
     .title-row {
         border-bottom: 1px solid #000;
