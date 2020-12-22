@@ -14,14 +14,14 @@ export const SideNav = styled.nav`
         text-decoration: none;
         font-size: 20px;
         color: #ffffff;
-        border: 1px solid #818181;
-        background-color: #000000;
+        border: 1px solid #000000;
+        background-color: #818181;
         display: block;
     }
     a.active {
         color: #ffffff;
-        border: 1px solid #000000;
-        background-color: #818181;
+        border: 1px solid #818181;
+        background-color: #000000;
     }
     a:hover {
         color: #f1f1f1;
